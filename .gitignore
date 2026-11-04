@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+vendor/
+tmp/*
+!tmp/.gitkeep
+!/uploads/.gitkeep
+.idea/
+*.log
+/uploads/*

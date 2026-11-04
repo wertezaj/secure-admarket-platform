@@ -1,0 +1,400 @@
+@import 'variables';
+
+$radius-card-large: 24px;
+$radius-box: 18px;
+$color-bg-page: #f5f5f7;
+$shadow-card: 0 8px 30px rgba(0, 0, 0, 0.04);
+$shadow-sticky: 0 20px 40px rgba(0, 0, 0, 0.08);
+
+.single-offer-page {
+  background-color: $color-bg-page;
+  padding-bottom: 5rem;
+  min-height: 100vh;
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem $container-padding;
+  }
+
+  .offer-header {
+    margin-bottom: 2rem;
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: $color-text-muted;
+      font-weight: $font-weight-medium;
+      font-size: 0.95rem;
+      text-decoration: none !important;
+      transition: color $transition-smooth;
+
+      svg {
+        transition: transform $transition-smooth;
+      }
+
+      &:hover {
+        color: $color-primary;
+
+        svg {
+          transform: translateX(-4px);
+        }
+      }
+    }
+  }
+
+  .offer-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 3.5rem;
+    align-items: start;
+  }
+
+  .offer-main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .offer-gallery {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    border-radius: $radius-card-large;
+    overflow: hidden;
+    background-color: #e5e5ea;
+    box-shadow: $shadow-card;
+
+    .slider-wrapper {
+      width: 100%;
+      height: 100%;
+      position: relative;
+
+      .slider-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out, transform 0.5s ease-out;
+
+        &.active {
+          opacity: 1;
+          z-index: 2;
+        }
+      }
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      color: $color-text-main;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all $transition-smooth;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      opacity: 0;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.9);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      &.prev-btn { left: 1.5rem; }
+      &.next-btn { right: 1.5rem; }
+    }
+
+    &:hover .slider-btn {
+      opacity: 1;
+    }
+
+    .slider-dots {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      background-color: rgba(0, 0, 0, 0.3);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      padding: 8px 14px;
+      border-radius: 20px;
+      z-index: 10;
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.4);
+        cursor: pointer;
+        transition: all $transition-smooth;
+
+        &.active {
+          background-color: #ffffff;
+          transform: scale(1.4);
+        }
+      }
+    }
+  }
+
+  .offer-details-section {
+
+    .offer-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: $color-text-main;
+      margin: 0 0 0.75rem 0;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .offer-address {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: $color-text-muted;
+      margin: 0 0 3rem 0;
+
+      svg { color: $color-primary; }
+    }
+
+    .offer-description-box, .offer-map-box {
+      background-color: $color-white;
+      border-radius: $radius-box;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      box-shadow: $shadow-card;
+
+      h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin: 0 0 1.25rem 0;
+        color: $color-text-main;
+        letter-spacing: -0.01em;
+      }
+
+      p {
+        font-size: 1.05rem;
+        line-height: 1.65;
+        color: rgba(29, 29, 31, 0.88);
+        margin: 0;
+      }
+    }
+
+    .offer-map-box {
+      #single-offer-map {
+        width: 100%;
+        height: 320px;
+        border-radius: 12px;
+        border: 1px solid rgba(0,0,0,0.06);
+        z-index: 1;
+      }
+    }
+  }
+
+  .offer-sidebar {
+    position: sticky;
+    top: calc(#{$header-height} + 2rem);
+
+    .booking-card {
+      background-color: $color-white;
+      border-radius: $radius-card-large;
+      padding: 2.5rem;
+      box-shadow: $shadow-sticky;
+      border: 1px solid rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+
+      .booking-price {
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+
+        .amount {
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: $color-text-main;
+          letter-spacing: -0.03em;
+        }
+        .period {
+          font-size: 1rem;
+          font-weight: 500;
+          color: $color-text-muted;
+          margin-left: 4px;
+        }
+      }
+
+      .booking-info {
+        margin-bottom: 2rem;
+
+        .info-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.75rem 0;
+
+          .label {
+            color: $color-text-muted;
+            font-size: 0.95rem;
+          }
+          .value {
+            font-weight: 600;
+            color: $color-text-main;
+            font-size: 0.95rem;
+          }
+          .date-ready {
+            color: #34c759;
+          }
+        }
+      }
+
+      .btn-book {
+        width: 100%;
+        height: 54px;
+        border-radius: 980px;
+        background-color: $color-primary;
+        color: #ffffff;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: all $transition-smooth;
+        margin-bottom: 2.5rem;
+        box-shadow: 0 8px 20px rgba(0, 113, 227, 0.2);
+
+        &:hover {
+          background-color: $color-primary-hover;
+          transform: translateY(-2px);
+          box-shadow: 0 12px 25px rgba(0, 113, 227, 0.3);
+        }
+        &:active {
+          transform: translateY(0);
+        }
+      }
+
+      .contact-info-section {
+        h4 {
+          font-size: 0.85rem;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          color: $color-text-muted;
+          margin: 0 0 1.25rem 0;
+        }
+
+        .contact-detail {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 1rem;
+
+          svg {
+            color: $color-text-muted;
+            flex-shrink: 0;
+          }
+
+          span, a {
+            font-size: 0.95rem;
+            color: $color-text-main;
+            font-weight: 500;
+            text-decoration: none !important;
+            transition: color $transition-smooth;
+          }
+
+          a:hover {
+            color: $color-primary;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $bp-desktop) {
+  .single-offer-page {
+    .offer-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .offer-sidebar {
+      position: static;
+    }
+  }
+}
+
+@media (max-width: $bp-mobile) {
+  .single-offer-page {
+    padding-top: 1.5rem;
+    padding-bottom: 2.5rem;
+
+    .container {
+      padding: 0;
+    }
+
+    .offer-header {
+      padding: 0 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .offer-main-content {
+      gap: 1.5rem;
+    }
+
+    .offer-gallery {
+      border-radius: 0;
+      box-shadow: none;
+
+      .slider-btn {
+        opacity: 1;
+        background-color: rgba(255, 255, 255, 0.85);
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+
+        &.prev-btn { left: 1rem; }
+        &.next-btn { right: 1rem; }
+      }
+    }
+
+    .offer-details-section {
+      padding: 0 1.5rem;
+
+      .offer-title {
+        font-size: 2rem;
+      }
+
+      .offer-description-box, .offer-map-box {
+        padding: 1.5rem;
+        border-radius: 20px;
+      }
+    }
+
+    .offer-sidebar {
+      padding: 0 1.5rem;
+
+      .booking-card {
+        padding: 2rem 1.5rem;
+        border-radius: 20px;
+      }
+    }
+  }
+}

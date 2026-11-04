@@ -1,0 +1,38 @@
+Options -Indexes
+
+<FilesMatch "^(\.env|\.git|\.htaccess|composer\.(json|lock)|.*\.(log|sql|bak|backup|ini|yml|yaml))$">
+    Require all denied
+</FilesMatch>
+
+RewriteEngine On
+RewriteBase /
+
+
+RewriteRule ^kontakt/?$ pages/kontakt.php [L]
+
+
+
+
+RewriteRule ^dodaj-ogloszenie/?$ pages/billboard/add-ad.php [L]
+RewriteRule ^oferty/?$ pages/billboard/ad-list.php [L]
+RewriteRule ^oferta/([0-9]+)$ pages/billboard/ad.php?id=$1 [L,QSA]
+RewriteRule ^oferta/edycja/([0-9]+)$ pages/billboard/edit-ad.php?id=$1 [L,QSA]
+
+
+RewriteRule ^uzytkownik/([0-9]+)$ pages/user/user-page.php?id=$1 [L,QSA]
+
+
+
+RewriteRule ^logowanie(?:/([a-zA-Z0-9-]+))?/?$ include/user-system/login.php?mess=$1 [L]
+RewriteRule ^rejestracja/?$ include/user-system/register.php [L]
+
+RewriteRule ^weryfikacja-email/?$ include/user-system/verify.php [L]
+RewriteRule ^zapomnialem-hasla(?:/([a-zA-Z0-9-]+))?/?$ include/user-system/forgot-password.php?reset=$1 [L]
+
+
+RewriteRule ^reset-hasla/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/?$ include/user-system/reset-password.php?selector=$1&validator=$2 [L]
+
+RewriteRule ^admin/?$ pages/admin-offers.php [L]
+RewriteRule ^admin/users?$ pages/admin-users.php [L]
+RewriteRule ^admin/settings?$ pages/admin-settings.php [L]
+

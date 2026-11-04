@@ -1,0 +1,322 @@
+@import 'variables';
+
+$auth-card-width: 440px;
+$radius-auth-card: 28px;
+$radius-auth-input: 14px;
+$color-auth-bg: #f5f5f7;
+$color-input-bg: rgba(118, 118, 128, 0.08);
+$color-input-focus: #ffffff;
+$shadow-auth-card: 0 12px 40px rgba(0, 0, 0, 0.06);
+
+.form-users-con {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: $color-auth-bg;
+  padding: 2rem;
+  font-family: $font-family-apple;
+
+  .form-users {
+    width: 100%;
+    max-width: $auth-card-width;
+    background-color: $color-white;
+    border-radius: $radius-auth-card;
+    padding: 3.5rem 3rem;
+    box-shadow: $shadow-auth-card;
+    animation: authSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+    transform: translateY(20px);
+
+    .title {
+      text-align: center;
+      margin-bottom: 2.5rem;
+
+      h2 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: $color-text-main;
+        margin: 0 0 0.5rem 0;
+        letter-spacing: -0.02em;
+      }
+
+      p {
+        font-size: 0.95rem;
+        color: $color-text-muted;
+        margin: 0;
+        line-height: 1.4;
+      }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .inputbox {
+      position: relative;
+      width: 100%;
+      height: 62px;
+
+      input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $color-input-bg;
+        border: 2px solid transparent;
+        border-radius: $radius-auth-input;
+        font-size: 1.05rem;
+        color: $color-text-main;
+
+        padding: 0 1.25rem;
+
+        outline: none;
+        transition: all $transition-smooth;
+        font-family: inherit;
+
+        &:-webkit-autofill {
+          -webkit-box-shadow: 0 0 0 50px #f2f2f7 inset !important;
+          -webkit-text-fill-color: $color-text-main !important;
+          border-radius: $radius-auth-input;
+        }
+
+        &:focus {
+          background-color: $color-white;
+          border-color: $color-primary;
+          box-shadow: 0 0 0 4px $color-primary-light;
+        }
+      }
+
+      label {
+        position: absolute;
+        left: 1.25rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1rem;
+        color: $color-text-muted;
+        pointer-events: none;
+        transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+        transform-origin: left top;
+      }
+
+      ion-icon:not(.toggle-password) {
+        position: absolute;
+        left: 1.25rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.35rem;
+        color: $color-text-muted;
+        z-index: 2;
+        transition: color $transition-smooth;
+      }
+
+      ion-icon:not(.toggle-password) ~ input { padding-left: 3.25rem; }
+      ion-icon:not(.toggle-password) ~ label { left: 3.25rem; }
+
+      .toggle-password {
+        position: absolute;
+        right: 1.25rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.35rem;
+        color: $color-text-muted;
+        z-index: 10;
+        cursor: pointer;
+        transition: color $transition-smooth;
+
+        &:hover { color: $color-text-main; }
+      }
+
+      .toggle-password ~ input { padding-right: 3.25rem; }
+
+      input:focus ~ label,
+      input:not(:placeholder-shown) ~ label {
+        top: 14px;
+        transform: translateY(-50%) scale(0.72);
+        color: $color-text-muted;
+      }
+
+      input:focus ~ label { color: $color-primary; }
+      &:focus-within ion-icon:not(.toggle-password) { color: $color-primary; }
+    }
+
+    .row {
+      margin: 0 !important;
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 12px;
+
+      > [class*="col-"] {
+        padding: 0 !important;
+        flex: 1;
+        max-width: 100%;
+      }
+
+      @media (max-width: 767px) {
+        flex-wrap: wrap;
+        gap: 0;
+
+        > [class*="col-"] {
+          flex: 0 0 100%;
+
+          &:not(:last-child) {
+            margin-bottom: 1.25rem;
+          }
+        }
+      }
+    }
+
+    .forgot-password {
+      text-align: right;
+      margin-top: -0.25rem;
+      margin-bottom: 0.5rem;
+
+      a {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: $color-primary;
+        text-decoration: none !important;
+        transition: color $transition-smooth;
+
+        &:hover { color: $color-primary-hover; }
+      }
+    }
+
+    .register {
+      text-align: center;
+      margin-top: 0;
+
+      p {
+        font-size: 0.95rem;
+        color: $color-text-muted;
+        margin: 0;
+
+        a {
+          color: $color-primary;
+          font-weight: 600;
+          text-decoration: none !important;
+          margin-left: 4px;
+          transition: color $transition-smooth;
+
+          &:hover { color: $color-primary-hover; }
+        }
+      }
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      height: 54px;
+      background-color: $color-primary;
+      color: $color-white;
+      font-size: 1.05rem;
+      font-weight: 600;
+      border: none;
+      border-radius: $radius-auth-input;
+      cursor: pointer;
+      transition: all $transition-smooth;
+      margin-top: 0.5rem;
+
+      &:hover {
+        background-color: $color-primary-hover;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 113, 227, 0.25);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+
+    .code-inputs {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin: 1.5rem 0 2rem 0;
+
+      input {
+        width: 48px;
+        height: 60px;
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-align: center;
+        border-radius: 12px;
+        background-color: $color-input-bg;
+        border: 2px solid transparent;
+        color: $color-text-main;
+        transition: all $transition-smooth;
+        outline: none;
+        padding: 0;
+
+        &:focus {
+          background-color: $color-white;
+          border-color: $color-primary;
+          box-shadow: 0 0 0 4px $color-primary-light;
+          transform: translateY(-2px);
+        }
+      }
+    }
+
+    .php-error, .php-success {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 12px;
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-align: center;
+      line-height: 1.4;
+      animation: authSlideUp 0.4s ease forwards;
+    }
+
+    .php-error {
+      background-color: rgba(255, 59, 48, 0.1);
+      color: #d93025;
+      border: 1px solid rgba(255, 59, 48, 0.2);
+    }
+
+    .php-success {
+      background-color: rgba(52, 199, 89, 0.1);
+      color: #1e8e3e;
+      border: 1px solid rgba(52, 199, 89, 0.2);
+    }
+  }
+}
+
+@keyframes authSlideUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 576px) {
+  .form-users-con {
+    padding: 0;
+    background-color: $color-white;
+    align-items: flex-start;
+
+    .form-users {
+      max-width: 100%;
+      padding: 3rem 1.5rem;
+      border-radius: 0;
+      box-shadow: none;
+      animation: none;
+      opacity: 1;
+      transform: none;
+
+      .title {
+        margin-bottom: 2rem;
+        margin-top: 1rem;
+      }
+
+      .code-inputs {
+        gap: 6px;
+        input {
+          width: 44px;
+          height: 56px;
+        }
+      }
+    }
+  }
+}

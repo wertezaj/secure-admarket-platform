@@ -1,0 +1,156 @@
+.admin-section {
+  padding: 4rem 0 8rem;
+}
+.admin-section .admin-header {
+  margin-bottom: 2.5rem;
+}
+.admin-section .admin-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1d1d1f;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+.admin-section .admin-header p {
+  color: #86868b;
+  font-size: 1.1rem;
+}
+.admin-section .admin-card {
+  background-color: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  overflow-x: auto;
+}
+.admin-section .admin-card::-webkit-scrollbar {
+  height: 8px;
+}
+.admin-section .admin-card::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+.admin-section .admin-card table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+.admin-section .admin-card table th {
+  text-align: left;
+  padding: 1rem 1.5rem;
+  color: #86868b;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.admin-section .admin-card table td {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+  color: #1d1d1f;
+  font-size: 0.95rem;
+  vertical-align: middle;
+}
+.admin-section .admin-card table td .user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.admin-section .admin-card table td .user-info strong {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+.admin-section .admin-card table td .user-info span {
+  font-size: 0.85rem;
+  color: #86868b;
+}
+.admin-section .admin-card table tr.offer-row {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.admin-section .admin-card table tr.offer-row:hover {
+  background-color: #f9f9fb;
+}
+.admin-section .admin-card table tr.offer-row:last-child td {
+  border-bottom: none;
+}
+
+.btn-delete-offer {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 59, 48, 0.08);
+  border: none;
+  color: #ff3b30;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+.btn-delete-offer:hover {
+  background: rgba(255, 59, 48, 0.15);
+  color: #d70015;
+}
+.btn-delete-offer ion-icon {
+  font-size: 1.15rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+.pagination .page-numbers {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.pagination .page-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  min-width: 38px;
+  padding: 0 12px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1d1d1f;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.pagination .page-link:hover:not(.disabled):not(.active) {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+.pagination .page-link.active {
+  background-color: #0071e3;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.25);
+}
+.pagination .page-link.disabled {
+  color: #86868b;
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.pagination .page-link.prev-next {
+  padding: 0 16px;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+.pagination .page-link.prev-next:hover:not(.disabled) {
+  background-color: #f9f9fb;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+.pagination .page-dots {
+  color: #86868b;
+  font-weight: 600;
+  padding: 0 8px;
+}
+
+/*# sourceMappingURL=admin.css.map */
