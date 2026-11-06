@@ -79,7 +79,7 @@ Allowing users to upload images for billboard listings introduces severe risks (
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/secure-admarket-platform.git
+   git clone https://github.com/wertezaj/secure-admarket-platform.git
    cd secure-admarket-platform
    ```
 
